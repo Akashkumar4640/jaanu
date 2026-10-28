@@ -1,0 +1,336 @@
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Dancing+Script:wght@500;600;700&family=DM+Sans:ital,opsz,wght@0,9..40,300..800;1,9..40,300..800&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Sacramento&display=swap');
+
+:root {
+  --color-cream-light: #fffdfa;
+  --color-cream: #faf5ef;
+  --color-cream-warm: #f5ebe1;
+  
+  --color-blush-50: #fdf2f8;
+  --color-blush-100: #fce7f3;
+  --color-blush-200: #fbcfe8;
+  --color-blush-300: #f472b6;
+  --color-blush-400: #ec4899;
+  --color-rose-500: #f43f5e;
+  --color-rose-600: #e11d48;
+  --color-rose-700: #be123c;
+  
+  --color-lavender-50: #faf5ff;
+  --color-lavender-100: #f3e8ff;
+  --color-lavender-200: #e9d5ff;
+  --color-lavender-300: #d8b4fe;
+  --color-lavender-600: #9333ea;
+  
+  --color-peach-100: #ffedd5;
+  --color-peach-200: #fed7aa;
+  
+  --color-gold-light: #fef08a;
+  --color-gold: #f59e0b;
+  --color-gold-accent: #d97706;
+  
+  --color-burgundy-900: #4a044e;
+  --color-burgundy-800: #701a75;
+  --color-burgundy-dark: #500724;
+  --color-brown-dark: #451a03;
+  --color-brown-warm: #78350f;
+  
+  --font-serif: 'Playfair Display', Georgia, serif;
+  --font-handwriting: 'Caveat', 'Dancing Script', cursive;
+  --font-sans: 'DM Sans', system-ui, -apple-system, sans-serif;
+  
+  --shadow-sm: 0 2px 6px rgba(112, 26, 117, 0.05);
+  --shadow-md: 0 6px 18px rgba(112, 26, 117, 0.07), 0 2px 4px rgba(0, 0, 0, 0.03);
+  --shadow-lg: 0 12px 30px rgba(112, 26, 117, 0.1), 0 3px 8px rgba(0, 0, 0, 0.05);
+  --shadow-wood: inset 0 2px 4px rgba(255, 255, 255, 0.4), inset 0 -2px 6px rgba(0, 0, 0, 0.4), 0 12px 28px rgba(69, 26, 3, 0.3);
+  
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-pill: 9999px;
+  --nav-height: 54px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  height: 100dvh;
+  max-height: 100dvh;
+  overflow: hidden !important;
+  background-color: var(--color-cream);
+  color: var(--color-burgundy-900);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#root {
+  width: 100%;
+  height: 100%;
+  height: 100dvh;
+  max-height: 100dvh;
+  overflow: hidden !important;
+  display: flex;
+  flex-direction: column;
+}
+
+.app-layout {
+  width: 100%;
+  height: 100%;
+  height: 100dvh;
+  max-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden !important;
+  position: relative;
+}
+
+main.app-main {
+  flex: 1;
+  min-height: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden !important;
+  position: relative;
+}
+
+/* Storybook paper texture overlay */
+.paper-texture {
+  background-image: radial-gradient(rgba(112, 26, 117, 0.03) 1px, transparent 0);
+  background-size: 24px 24px;
+}
+
+/* Scene Container: Strictly fits 100% of remaining main height without scrollbar */
+.scene-viewport {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  max-height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(6px, 1.5vh, 16px) clamp(8px, 2vw, 24px);
+  overflow: hidden !important;
+  box-sizing: border-box;
+}
+
+/* Scrollable Scenes Container: allows natural scrolling for Letter, Promises, and Final Scene */
+.scrollable-scene,
+.letter-scrollable {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  max-height: 100%;
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+  -webkit-overflow-scrolling: touch;
+  box-sizing: border-box;
+}
+
+.scrollable-scene::-webkit-scrollbar,
+.letter-scrollable::-webkit-scrollbar {
+  width: 7px;
+}
+
+.scrollable-scene::-webkit-scrollbar-track,
+.letter-scrollable::-webkit-scrollbar-track {
+  background: rgba(251, 207, 232, 0.25);
+  border-radius: 999px;
+}
+
+.scrollable-scene::-webkit-scrollbar-thumb,
+.letter-scrollable::-webkit-scrollbar-thumb {
+  background: #f472b6;
+  border-radius: 999px;
+}
+
+.scrollable-scene::-webkit-scrollbar-thumb:hover,
+.letter-scrollable::-webkit-scrollbar-thumb:hover {
+  background: #ec4899;
+}
+
+/* Typography Helpers */
+.font-handwriting {
+  font-family: var(--font-handwriting);
+}
+
+.font-serif {
+  font-family: var(--font-serif);
+}
+
+.font-sans {
+  font-family: var(--font-sans);
+}
+
+/* Glassmorphism Cards */
+.glass-card {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+}
+
+.glass-card-warm {
+  background: rgba(255, 253, 250, 0.94);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(251, 207, 232, 0.5);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+}
+
+/* Wooden Picture Frame with responsive constraints */
+.wooden-frame {
+  position: relative;
+  padding: clamp(5px, 0.9vh, 9px);
+  background: linear-gradient(135deg, #854d0e 0%, #713f12 30%, #582e0e 70%, #854d0e 100%);
+  border-radius: clamp(10px, 2vh, 16px);
+  box-shadow: var(--shadow-wood);
+  border: 2px solid #a16207;
+  max-width: 100%;
+  max-height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.wooden-frame::before {
+  content: '';
+  position: absolute;
+  inset: 4px;
+  border: 1px dashed rgba(254, 240, 138, 0.45);
+  border-radius: 10px;
+  pointer-events: none;
+}
+
+.wooden-frame-inner {
+  position: relative;
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.45);
+  background: #fff;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+/* Buttons */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: clamp(6px, 1vh, 10px) clamp(16px, 2.5vw, 26px);
+  font-family: var(--font-sans);
+  font-size: clamp(0.85rem, 1.5vh, 0.95rem);
+  font-weight: 600;
+  color: #fff;
+  background: linear-gradient(135deg, #e11d48 0%, #db2777 50%, #9333ea 100%);
+  border: none;
+  border-radius: var(--radius-pill);
+  box-shadow: 0 3px 10px rgba(225, 29, 72, 0.3);
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  text-decoration: none;
+  user-select: none;
+  white-space: nowrap;
+}
+
+.btn-primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 5px 16px rgba(225, 29, 72, 0.4);
+}
+
+.btn-primary:active {
+  transform: translateY(1px);
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: clamp(5px, 0.9vh, 8px) clamp(12px, 2vw, 18px);
+  font-family: var(--font-sans);
+  font-size: clamp(0.8rem, 1.4vh, 0.9rem);
+  font-weight: 600;
+  color: var(--color-burgundy-900);
+  background: rgba(255, 255, 255, 0.9);
+  border: 1.5px solid var(--color-blush-200);
+  border-radius: var(--radius-pill);
+  box-shadow: var(--shadow-sm);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  user-select: none;
+  white-space: nowrap;
+}
+
+.btn-secondary:hover {
+  background: #fff;
+  border-color: var(--color-blush-300);
+}
+
+/* Dedicated Bottom Navigation Bar */
+.bottom-nav {
+  flex-shrink: 0;
+  height: var(--nav-height);
+  width: 100%;
+  background: rgba(255, 253, 250, 0.94);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-top: 1px solid rgba(251, 207, 232, 0.65);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 clamp(10px, 2vw, 20px);
+  z-index: 100;
+  box-shadow: 0 -3px 14px rgba(112, 26, 117, 0.05);
+}
+
+/* Ripple animation for door knock */
+@keyframes ripple {
+  0% { transform: scale(0.6); opacity: 1; }
+  100% { transform: scale(2.2); opacity: 0; }
+}
+
+.knock-ripple {
+  position: absolute;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(254, 240, 138, 0.7) 0%, rgba(244, 63, 94, 0.2) 70%, transparent 100%);
+  pointer-events: none;
+  animation: ripple 0.6s cubic-bezier(0, 0, 0.2, 1) forwards;
+}
+
+/* Gentle bounce */
+@keyframes gentleBounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
+}
+
+.gentle-bounce {
+  animation: gentleBounce 2.4s ease-in-out infinite;
+}
+
+button:focus-visible, a:focus-visible, input:focus-visible {
+  outline: 2px solid var(--color-rose-500);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
